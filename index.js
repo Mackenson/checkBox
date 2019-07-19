@@ -7,7 +7,6 @@ function handleCheck(e) {
 
   if (e.shiftKey && this.checked) {
     checkBoxes.forEach((checkbox)=>{
-      console.log(checkbox);
       if (checkbox === this || checkbox === lastCheck) {
         inBetween = !inBetween;
       }
@@ -23,4 +22,37 @@ function handleCheck(e) {
 
 checkBoxes.forEach((checkbox)=>{
   checkbox.addEventListener('click', handleCheck);
+});
+
+const checkAll = document.querySelector('#checkAll');
+
+const checkEach = document.querySelectorAll('.check2');
+
+console.log(checkEach.length-1);
+
+function clickAll() {
+  checkEach.forEach((checkbox)=>{
+    if (checkAll.checked) {
+      checkbox.checked = true;
+    } else if (!checkAll.checked) {
+      checkbox.checked = false;
+    }
+  });
+
+}
+
+function handleCheck2() {
+  checkEach.forEach((checkbox)=>{
+    if (checkbox.checked) {
+      checkAll.checked = true;
+    } else if (!checkbox.checked) {
+      checkAll.checked = false;
+      checkbox.checked = false;
+    }
+  });
+}
+
+
+checkEach.forEach((checkbox)=>{
+  checkbox.addEventListener('click', handleCheck2);
 });
